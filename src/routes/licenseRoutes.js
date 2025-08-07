@@ -1,0 +1,22 @@
+// src/routes/licenseRoutes.js
+import { Router } from 'express';
+const router = Router();
+import {
+  checkLicensePost,
+  generateLicense,
+  getAllLicenses,
+  deleteLicense,
+  updateLicense,
+  checkLicense
+} from '../controllers/licenseController.js';
+
+router.get('/check-license/:licenseKey', checkLicense);
+router.post('/check-license', checkLicensePost); // ← ✅ New POST version
+
+router.post('/generate-license', generateLicense);
+router.get('/all-licenses', getAllLicenses);
+router.delete('/delete-license/:licenseKey', deleteLicense);
+router.patch('/update-license/:licenseKey', updateLicense); // ✅ This line is required
+
+
+export default router;
